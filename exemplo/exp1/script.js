@@ -1,24 +1,22 @@
-// // Declaração de vetor:
-// let vetor = [];
-
-// // Adiciono por posição:
-// vetor[0] = "Nome 1";
-// // Adiciono na ultima posição
-// vetor.push("Nome 2");
-
-// vetor.push(prompt("Insira um valor"));
-
-// console.log(vetor);
-
-let numeros = [];
-for (let i = 0; 1 < 5; i++) {
-    let numero = prompt("Insira um número!");
-    while (isNaN(numero)) {
-        alert("Isso não é um número válido!")
-        numero = prompt("Insira um número novamente!")
+let notas = [];
+for (let i = 0; i < 4; i++){
+    let nota = prompt(`Informe a ${i + 1} nota!`)
+    nota = nota.replace(',','.');
+    while (isNaN(nota) || nota.trim() === ""){
+        alert("Nota inválida!")
+        nota = prompt(`Informe a ${i + 1} nota novamente!`)
     }
-    numero = parseInt(numero);
-    numeros.push(numero);
+    nota = parseFloat(nota);
+    notas.push(nota);
+    // notas[i] = nota;
 }
 
-console.log(numeros);
+let soma = 0;
+let media = 0;
+let quant = notas.length;
+for (let m = 0; m < quant; m++) {
+    soma += notas[m];    
+}
+media = soma/quant;
+
+alert(`A média das notas informadas é: ${media.toFixed(2)}`)
