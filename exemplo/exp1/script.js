@@ -1,28 +1,27 @@
-let letras = [];
-
-for (let i = 0; i < 10; i++) {
-    let letra = prompt(`Digite a ${i + 1}ª letra!`);
-    while (!isNaN(letra) || letra.trim() == '' || letra.length !== 1) {
-        alert("Letra inválida!");
-        letra = prompt(`Digite a ${i + 1}ª letra novamente!`)
-    }
-    letras.push(letra);
+let listaSalarios = [];
+for (let i = 0; i < 5; i++) {
+    //leitura do salário em String
+    let salarioString = prompt("Informe o Salario: ");
+    //conversão do salário de string para float (número decimal)
+    let salario = parseFloat(salarioString);
+    //insere na lista (vetor)
+    listaSalarios.push(salario);
 }
 
-let msg = "";
-let = quantidade = 0;
-for (let j = 0; j < letras.length; j++) {
-    let letraLida = letras[j].toUpperCase();
-    let vgs = ["A", "E", "I", "O", "U"];
-    if (!(vgs[0] === letraLida) &&
-        !(vgs[1] === letraLida) &&
-        !(vgs[2] === letraLida) &&
-        !(vgs[3] === letraLida) &&
-        !(vgs[4] === letraLida)) {
-        msg += letras[j] + " ";
-        quantidade++;
-    }
+let mensagem = "Salarios Líquidos: \n";
 
+for (let j = 0; j < listaSalarios.length; j++) {
+
+    // F1: 
+    // desconto = salariobruto x 12/100 ;
+    // salarioliquido = salariobruto - desconto 
+
+    // F2: 100-12 = 88 
+    // salarioliquido =  salariobruto X 88/100;
+
+    let salLiquido =  listaSalarios[j] - (listaSalarios[j] * (12/100)); 
+    //let salLiquido = listaSalarios[j] * (88 / 100);
+
+    mensagem += "R$ " + salLiquido.toFixed(2) + "\n";
 }
-
-alert(`A quantidades de consoantes é ${quantidade} e as consoantes são elas: ${msg}`);
+alert(mensagem);
