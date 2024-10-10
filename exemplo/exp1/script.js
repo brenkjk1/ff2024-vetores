@@ -1,27 +1,22 @@
-let listaSalarios = [];
-for (let i = 0; i < 5; i++) {
-    //leitura do salário em String
-    let salarioString = prompt("Informe o Salario: ");
-    //conversão do salário de string para float (número decimal)
-    let salario = parseFloat(salarioString);
-    //insere na lista (vetor)
-    listaSalarios.push(salario);
+function lerNumeros() {
+    let numeros = [];
+    for (let i = 0; i < 20; i++) {
+        let numero = prompt(`Informe o ${i + 1}º Número:`);
+        if (isNaN(numero) || numero.trim() == '') {
+            alert("Numero Inválido!");
+            numero = prompt(`Informe o ${i + 1}º Número novamente:`);
+        }
+        numero = parseFloat(numero);
+        numeros.push(numero);
+    }
+    return numeros;
 }
 
-let mensagem = "Salarios Líquidos: \n";
+let listaGeral = lerNumeros();
+let listaPares = listaGeral.filter(num => (num % 2 === 0));
+let listaImpares = listaGeral.filter(num => (num % 2 !== 0));
 
-for (let j = 0; j < listaSalarios.length; j++) {
-
-    // F1: 
-    // desconto = salariobruto x 12/100 ;
-    // salarioliquido = salariobruto - desconto 
-
-    // F2: 100-12 = 88 
-    // salarioliquido =  salariobruto X 88/100;
-
-    let salLiquido =  listaSalarios[j] - (listaSalarios[j] * (12/100)); 
-    //let salLiquido = listaSalarios[j] * (88 / 100);
-
-    mensagem += "R$ " + salLiquido.toFixed(2) + "\n";
-}
-alert(mensagem);
+let msg = `A lista de numeros gerais é ${listaGeral.join(', ')} \n
+A lista de numeros pares é ${listaPares.join(', ')} \n 
+A lista de numeros ímpares é ${listaImpares.join(', ')} \n`
+alert(msg);
